@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ERA+ Calculator</title>
+    <title>D1 ERA+ Calculator</title>
     <style>
         body {
             font-family: Arial;
-            max-width: 600px;
+            max-width: 700px;
             margin: 40px auto;
             padding: 20px;
         }
@@ -17,7 +17,7 @@
         }
         #result {
             margin-top: 20px;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
         }
     </style>
@@ -30,34 +30,41 @@
 <input type="number" id="era" step="0.01" placeholder="Enter ERA">
 
 <label>Select School:</label>
-<select id="school">
-    <option value="">-- Select --</option>
-    <option value="105">LSU (PF 105)</option>
-    <option value="98">Oregon State (PF 98)</option>
-    <option value="102">Texas (PF 102)</option>
-    <option value="95">Wake Forest (PF 95)</option>
-</select>
+<select id="school"></select>
 
 <button onclick="calculateERAPlus()">Calculate ERA+</button>
 
 <div id="result"></div>
 
 <script>
+// === Inserted Park Factor Dataset ===
+const parkFactors = /* paste JSON here */;
+
+// Populate dropdown
+const dropdown = document.getElementById("school");
+dropdown.innerHTML = "<option value=''>-- Select School --</option>";
+
+for (const school in parkFactors) {
+    const opt = document.createElement("option");
+    opt.value = parkFactors[school];
+    opt.textContent = school;
+    dropdown.appendChild(opt);
+}
+
 function calculateERAPlus() {
     const era = parseFloat(document.getElementById("era").value);
     const pf = parseFloat(document.getElementById("school").value);
     const leagueERA = 5.42;
 
     if (!era || !pf) {
-        document.getElementById("result").innerHTML = "Please enter ERA and select a school.";
+        document.getElementById("result").innerHTML = "Enter ERA and select a school.";
         return;
     }
 
     const eraPlus = 100 * ((leagueERA * (pf / 100)) / era);
-    document.getElementById("result").innerHTML = "Your ERA+ is: " + eraPlus.toFixed(1);
+    document.getElementById("result").innerHTML = "ERA+: " + eraPlus.toFixed(1);
 }
 </script>
 
 </body>
 </html>
-
