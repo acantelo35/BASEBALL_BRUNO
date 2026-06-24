@@ -37,34 +37,6 @@
 <div id="result"></div>
 
 <script>
-// === Inserted Park Factor Dataset ===
-const parkFactors = /* paste JSON here */;
-
-// Populate dropdown
-const dropdown = document.getElementById("school");
-dropdown.innerHTML = "<option value=''>-- Select School --</option>";
-
-for (const school in parkFactors) {
-    const opt = document.createElement("option");
-    opt.value = parkFactors[school];
-    opt.textContent = school;
-    dropdown.appendChild(opt);
-}
-
-function calculateERAPlus() {
-    const era = parseFloat(document.getElementById("era").value);
-    const pf = parseFloat(document.getElementById("school").value);
-    const leagueERA = 5.42;
-
-    if (!era || !pf) {
-        document.getElementById("result").innerHTML = "Enter ERA and select a school.";
-        return;
-    }
-
-    const eraPlus = 100 * ((leagueERA * (pf / 100)) / era);
-    document.getElementById("result").innerHTML = "ERA+: " + eraPlus.toFixed(1);
-}
-</script>
-
-</body>
-</html>
+// === FULL PARK FACTOR DATASET ===
+const parkFactors = {
+"Air Force":145,"Morehead":142,"Nevada":135,"Appalachian St.":135,"New Mexico":134,"CSUN":132,"WCU":130,"Columbia":130,"Utah Valley":128,"Ball State":128,"Richmond":127,"BYU":127,"NM State":126,"Hartford":125,"Delaware":124,"UMBC":123,"Coastal Carolina":123,"Marist":122,"ACU":122,"Texas State":120,"Penn State":120,"Ole Miss":120,"HCU":120,"Georgia Tech":120,"UT Martin":119,"Prairie View":119,"Oakland":119,"NKU":119,"Austin Peay":119,"Virginia":118,"Northern CO":118,"UMass":118,"Bryant":118,"Valparaiso":117,"Texas":117,"Tennessee":117,"Harvard":117,"Canisius":117,"Texas Tech":116,"Kennesaw":116,"Kansas":116,"Rice":115,"Pacific":115,"Longwood":115,"Indiana":115,"VMI":114,"Pittsburgh":114,"Northern IL":114,"The Mount":114,"JMU":114,"Youngstown":113,"Albany":113,"Saint Peter's":113,"Grambling":113,"CSUB":113,"Xavier":112,"Santa Clara":112,"Mississippi St.":112,"LSU":112,"Illinois":112,"W&M":111,"Rider":111,"Fort Wayne":111,"ND State":111,"LMU":111,"Dayton":111,"Brown":111,"Utah":110,"North FL":110,"Iowa":110,"CSU":110,"Washington St.":109,"UNLV":109,"Quinnipiac":109,"Oklahoma":109,"Cincinnati":109,"Auburn":109,"SIUE":108,"Missouri":108,"Mercer":108,"Louisville":108,"East Carolina":108,"BGSU":108,"UC Riverside":107,"TN Tech":107,"Bonaventure":107,"San Diego":107,"Sacred Heart":107,"Eastern IL":107,"Charleston":107,"Arizona":107,"Wichita St.":106,"Upstate":106,"SD State":106,"SFA":106,"New Orleans":106,"Michigan":106,"Georgetown":106,"Florida":106,"California":106,"UIW":105,"SE Louisiana":105,"SEMO":105,"SHSU":105,"Nebraska":105,"Hofstra":105,"GA State":105,"Fla. Atlantic":105,"Boston College":105,"Virginia Tech":104,"UCLA":104,"Troy":104,"Toledo":104,"Radford":104,"Maryland":104,"Davidson":104,"Dallas Baptist":104,"Coppin":104,"Asheville":103,"ODU":103,"Navy":103,"Middle TN":103,"LA Tech":103,"EKU":103,"Central
